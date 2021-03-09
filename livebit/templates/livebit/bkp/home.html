@@ -1,0 +1,154 @@
+{% extends 'livebit/base.html' %}
+{% load humanize %}
+
+{% block title %}LiveBit{% endblock %}
+
+{% block css %}
+
+.img-post i:hover {
+  background-color: #000;
+  color: #fff;
+  transition-duration: 0.2s;
+}
+
+.img-post i {
+  cursor: pointer;
+  font-size: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 4px;
+  position: absolute;
+  left: 5%;
+ }
+
+.img-post{
+	position: relative;
+}
+
+.frndBtn{
+	font-size: 12px;
+	border-radius: 3px;
+	background: #4d97f0;
+	color: #fff;
+	border: none;
+}
+.frndBtn:active{
+	background: #4d97f0ab;
+}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<div class="card mt-5 mx-5" style="width: 270px;position: fixed;">
+	<div class="card-body">
+		<div class="row ml-1">
+			<img src="media/{{user.userprofile.user_img}}" class="rounded-circle border mb-1 mr-2" style="width: 40px;height: 40px;">
+			<h6><a class="custmLink" style="text-decoration: none;" href="{{user.username}}">{{user.username}}</a></h6>
+		</div>
+		<h6 class="text-muted" style="margin-left: 50px;margin-top: -25px;">{{user.first_name}} {{user.last_name}}</h6>
+	</div>
+	<div class="card-body" style="height: 180px;overflow: hidden auto;">
+		<h6 class="text-muted card-subtitle mb-3">Suggestions for you</h6>
+		<ul class="list-group">
+			{% for user in users %}
+			<div class="row">
+			<a href="/{{user.username}}" style="text-decoration: none;" class="col-sm"><img class="rounded-circle border mb-1" height="30" width="30" src="media/{{user.userprofile.user_img}}"> {{user.username}}</a>{% if user not in friends %}<a href="{% url 'livebit:change_friends' operation='add' pk=user.pk %}"><button class="frndBtn ml-1" style="outline: none;height: 25px;">Follow</button></a>{% endif %}
+			</div>
+			{% endfor %}
+		</ul>
+	</div>
+	<hr>
+	<div class="card-body" style="height: 180px;overflow: hidden auto;">
+		<h6 class="text-muted card-subtitle mb-3">Followings</h6>
+		<ul class="list-group">
+			{% for friend in friends %}
+			<div class="row">
+			<a href="/{{friend.username}}" style="text-decoration: none;" class="col-sm"><img class="rounded-circle border mb-1" height="30" width="30" src="media/{{friend.userprofile.user_img}}"> {{friend.username}}</a> <a href="{% url 'livebit:change_friends' operation='remove' pk=friend.pk %}"><button class="frndBtn ml-1" style="outline: none;height: 25px;">Unfollow</button></a>
+			</div>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+
+{% for post in posts %}
+<center>
+<div class="card shadow text-left my-5" style="width: 600px;">
+	<div class="card-body">
+		<div class="row ml-1">
+			<img src="media/{{user.userprofile.user_img}}" class="rounded-circle border mb-1 mr-2" style="width: 40px;height: 40px;">
+			<h6><a class="custmLink" style="text-decoration: none;" href="{{user.username}}">{{user.username}}</a></h6>
+		</div>
+		<i class="fas fa-ellipsis-h" style="float: right;margin-top: -36px;"></i>
+		<h6 class="text-muted" style="margin-left: 50px;margin-top: -25px;">{{post.location}}</h6>
+		<div class="img-post">
+			<img class="mb-1" src="media/{{post.post_img}}" style="width: 560px;">
+			<i class="fas fa-user"></i>
+		</div>
+		<form action="{% url 'livebit:like_post' %}" method="POST">
+			{% csrf_token %}
+
+			{% if is_liked %}
+			<button type="submit" name="post_id" style="border: none;background-color: #fff;outline: none;" value="{{post.id}}"><i class="fas fa-heart" style="font-size: 25px;"></i></button>
+			{% else %}
+			<button type="submit" name="post_id" style="border: none;background-color: #fff;outline: none;" value="{{post.id}}"><i class="far fa-heart" style="font-size: 25px;"></i></button>
+			{% endif %}
+
+			<i class="far fa-comment-dots mx-2" style="font-size: 25px;"></i>
+			<i class="far fa-paper-plane" style="font-size: 25px;"></i>
+			<i class="far fa-bookmark" style="font-size: 25px;float: right;"></i>
+		</form>
+		<div class="row mx-1 mt-1">
+			<p><strong>{{user.username}}</strong> - {{post.caption}}</p>
+		</div>
+		<a data-toggle="modal" data-target="#likedUserModal"><b>{{postlike|intcomma}} likes</b></a>
+		<div class="row ml-1">
+		<h6 class="text-muted mb-3">{{post.date_time|date:"j F Y"}}</h6>
+		<h6 class="mx-2 mb-3"> at </h6>
+		<h6 class="text-muted mb-3">{{post.date_time|date:"P"}}</h6>
+		</div>
+	</div>
+</div>
+</center>
+
+<div class="modal fade" id="likedUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Likes</h5>
+	  </div>
+	  <div class="modal-body text-center">
+		<!-- {{post.liked_users}} -->
+	  </div>
+	</div>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+
+{% block javascript %}
+function check_resoln_search() {
+	if ((window.screen.width)<670) {
+		$('#user-input').hide();
+	}else{
+		$('#user-input').show();
+	}
+}
+function check_resoln_sidecard() {
+	if ((window.screen.width)<670) {
+		$('#user-input').hide();
+	}else{
+		$('#user-input').show();
+	}
+}
+check_resoln_search();
+$(window).resize(function(){
+	check_resoln_search();
+});
+{% endblock %}

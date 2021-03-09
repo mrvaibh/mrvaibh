@@ -1,0 +1,79 @@
+{% load humanize %}
+<form action="{% url 'livebit:like_post' %}" method="POST">
+	{% csrf_token %}
+
+	{% if post.user in post.likes.all %}
+	<button type="submit" id="like{{post.id}}" name="post_id" style="border: none;background-color: #fff;outline: none;" value="{{post.id}}"><i class="fas fa-heart" style="font-size: 25px;color: red;"></i></button>
+	{% else %}
+	<button type="submit" id="like{{post.id}}" name="post_id" style="border: none;background-color: #fff;outline: none;" value="{{post.id}}"><i class="far fa-heart" style="font-size: 25px;"></i></button>
+	{% endif %}
+
+	<i class="far fa-comment-dots mx-2" style="font-size: 25px;"></i>
+	<i class="far fa-paper-plane" style="font-size: 25px;"></i>
+	<i class="far fa-bookmark" style="font-size: 25px;float: right;"></i>
+</form>
+
+<div class="row mx-1 mt-1">
+	<p><strong><a href="{% url 'livebit:profile' u=post.user %}">{{post.user}}</a></strong> - {{post.caption}}</p>
+</div>
+
+{% if post.likes.all.count != 0 %}
+<a class="ml-1" data-toggle="modal" data-target="#likedUserModal{{post.id}}" style="cursor: pointer;"><b>{{post.likes.all.count|intcomma}} like{{post.likes.all.count|pluralize}}</b></a>
+{% endif %}
+
+<div class="row ml-1">
+	<h6 class="text-muted mb-3">{{post.date_time|date:"j F Y"}}</h6>
+	<h6 class="mx-2 mb-3"> at </h6>
+	<h6 class="text-muted mb-3">{{post.date_time|date:"P"}}</h6>
+</div>
+
+<div class="modal fade" id="likedUserModal{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Likes</h5>
+	  </div>
+	  <div class="modal-body" style="height: 500px;overflow: hidden auto;">
+		{% for user in post.likes.all %}
+		<div class="user-list mb-3">
+			<div class="row">
+				<a href="/{{user.username}}" style="text-decoration: none;" class="col-sm"><img src="media/{{user.userprofile.user_img}}" class="rounded-circle border mb-1 mr-2" onContextMenu="return false;" draggable="false" style="width: 40px;height: 40px;user-select: none;"></a>
+				{% if user != request.user %}
+				<div id="likes-follow">
+				{% include 'livebit/likes-follow.html' %}
+				</div>
+				{% endif %}
+			</div>
+			<!-- <label style="font-weight: 500;margin-top: -80px;"></label> -->
+			<h6 style="margin-left: 70px;margin-top: -40px;">{{user.username}}</h6>
+			<h6 class="text-muted" style="margin-left: 70px;margin-top: -10px;">{{user.first_name}} {{user.last_name}}</h6>
+		</div>
+		{% endfor %}
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script>
+	$(document).ready(function(event){
+		$(document).on('click', '#like{{post.id}}', function(event){
+			event.preventDefault();
+			var pk = $(this).attr('value');
+			$.ajax({
+				type: 'POST',
+				url: '/like/',
+				data: {'id':pk, 'csrfmiddlewaretoken':'{{csrf_token}}'},
+				dataType: 'json',
+				success: function(response){
+					$('#like-section').html(response['form'])
+					console.log('liked')
+				},
+				error: function(rs, e){
+					console.log('error:', e, rs);
+				},
+
+			});
+		});
+	});
+</script>

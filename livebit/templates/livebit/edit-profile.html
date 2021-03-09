@@ -1,0 +1,62 @@
+{% extends 'livebit/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Profile • LiveBit{% endblock %}
+
+{% block post %}{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+	<div class="row my-2">
+		<div class="col-lg-4 order-lg-1 text-center">
+			<img src="/media/{{user.userprofile.user_img}}" class="mx-auto img-fluid img-circle d-block rounded-circle border" alt="User Image" onContextMenu="return false;" draggable="false" style="cursor: pointer; user-select: none;" height="250" width="200" href="#" data-toggle="modal" data-target="#profilepicModal" {% if user == request.user %} title="Change Profile Photo" {% endif %}>
+		</div>
+
+		<div class="col-lg-8 order-lg-2">
+				<div class="tab-pane mt-2" id="edit">
+					<form role="form" method="POST" id="my-div" enctype="multipart/form-data">
+						{% csrf_token %}
+						{{edituser_form|crispy}}
+						<h5 style="color: #85b3e0">Private Information</h5>
+						<!-- <strong style="color: #85b3e0">Private Information</strong> -->
+						{{editprofile_form|crispy}}
+
+						<a href="#" data-toggle="modal" data-target="#profilepicModal">Change Profile Photo</a>
+
+						<div class="modal fade" id="profilepicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Change Profile Photo</h5>
+							  </div>
+							  <div class="modal-body text-center">
+								<h3 style="cursor: pointer; color: skyblue;" onclick="$('#id_user_img').trigger('click');">Upload Picture</h3>
+								<hr>
+								<h2 style="cursor: pointer; color: red;" onclick="document.getElementById('id_user_img').value = 'user/img/default.png';">Remove Photo</h3>
+								<hr>
+								<h3 style="cursor: pointer;" data-dismiss="modal">Cancel</h3>
+							  </div>
+							</div>
+						  </div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label"></label>
+							<div class="col-lg-9">
+								<input type="submit" class="btn btn-primary" id="save" value="Save Changes">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}

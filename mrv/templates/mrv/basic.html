@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% load static %}
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>{% block title%}{% endblock %}</title>
+	<link rel="shortcut icon" href="{% static 'mrv/assets/img/favicon.ico' %}">
+
+	<meta name="title" content="Vaibhav Shukla | Official Site">
+	<meta name="description" content="Vaibhav Shukla aka Mr.VaiBH has this website for his obvious purpose">
+	<meta name=”robots” content="index, follow">
+	<meta name="google-site-verification" content="y1UDS65yeUz2Qi0W97DxJFHjRxMTR8vQHYTWrzyuWM8" />
+	
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Vaibhav Shukla | Official Website" />
+	<meta property="og:description" content="Vaibhav Shukla aka Mr.VaiBH has this website for his obvious purpose" />
+	<meta property="og:image" content="https://avatars0.githubusercontent.com/u/52421094?s=460&u=f6dd8e409df3c7599e4594c71804b6cf1e065d3d&v=4" />
+	<meta property="og:url" content="http://mrvaibh.ml" />
+	<meta property="og:site_name" content="Vaibhav Shukla" />
+	
+	<meta name="twitter:title" content="MrVaiBH">
+	<meta name="twitter:description" content="Vaibhav Shukla twitter account">
+	<meta name="twitter:image" content="https://avatars0.githubusercontent.com/u/52421094?s=460&u=f6dd8e409df3c7599e4594c71804b6cf1e065d3d&v=4">
+	<meta name="twitter:site" content="@MrVaiBH">
+	<meta name="twitter:creator" content="@MrVaiBH">
+	
+	<link rel="stylesheet" href="{% static 'mrv/assets/bootstrap/css/bootstrap.min.css?h=8b679dc8ff6e11bdd2c46c91ec9cfecc' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+	<link rel="stylesheet" href="{% static 'mrv/assets/fonts/simple-line-icons.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'mrv/assets/css/smoothproducts.css?h=38a515b6b30123300b3619cce6411cec' %}">
+
+	<style>
+		{% block css %} {% endblock %}
+	</style>
+</head>
+
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+		<div class="container"><img src="{% static 'mrv/assets/img/Mr.VaiBH_strip.png?h=a23cdb60e5e10222e27a06023f6d9aaa' %}" height="55"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse"
+				id="navcol-1">
+				<ul class="nav navbar-nav ml-auto">
+
+					{% block nav-home %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv">Home</a></li>{% endblock %}
+					{% block nav-pricing %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/pricing">Pricing</a></li>{% endblock %}
+					{% block nav-blog %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/blog-list">Blogs</a></li>{% endblock %}
+					{% block nav-about %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/about">About Us</a></li>{% endblock %}
+					{% block nav-contact %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/contact">Contact</a></li>{% endblock %}
+					
+					{% block nav %}
+
+{% if user.is_authenticated or email.is_authenticated %}
+<li class="nav-item dropdown no-arrow">
+	<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<i class="fa fa-bell" style="font-size:25px;color:#478cdb"></i>
+		<span class="badge badge-danger">9+</span>
+	</a>
+	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+		<a class="dropdown-item" href="#">Action</a>
+		<a class="dropdown-item" href="#">Another action</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="#">Something else here</a>
+	</div>
+</li>
+<li class="nav-item dropdown no-arrow">
+	<a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<i class="fa fa-th" style="font-size:25px;color:#478cdb;"></i>
+		<span class="badge badge-danger">{{service_count}}</span>
+	</a>
+	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="serviceDropdown">
+		<style type="text/css">
+			#tbl:hover{
+				cursor: pointer;
+				font-weight: bolder;
+				background: #f8fcff;
+				transition: all 0.3s;
+			}
+			.img {
+				width: auto;
+				height: 50px;
+				background-repeat: no-repeat;
+			}
+		</style>
+		<table class="table table-borderless mt-3">
+			<tbody>
+				<tr>
+				{% for service in service %}
+					<td id="tbl"><a href="{{service.url}}" title="{{service.description}}" style="text-decoration: none;"><img class="rounded border responsive img" src="{{service.service_img.url}}" target="_blank">{{service.name}}</a></td>
+				
+				{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+				</tr>
+				<tr>
+					{% endif %}
+				{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</li>
+<li class="nav-item dropdown no-arrow">
+	<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<i class="fa fa-user-circle-o" style="font-size:25px;color:#478cdb"></i>
+	</a>
+	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+		<label class="dropdown-header">{{user.first_name}} {{user.last_name}}</label>
+		<label class="dropdown-header">{{user.email}}</label>
+		<a class="dropdown-item" href="/{{user.username}}"><i class="fa fa-user" aria-hidden="true"></i>
+ Profile</a>
+		<a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i>
+ Settings</a>
+		<a class="dropdown-item" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i>
+ Activity Log</a>
+		<a class="dropdown-item" href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>
+ Help Desk</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="/accounts/login"><i class="fa fa-user-plus" aria-hidden="true"></i>
+ Add another account</a>
+		<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>
+ Logout</a>
+	</div>
+</li>
+
+{% else %}
+<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/accounts/login">Login</a></li>
+<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/accounts/register">Register</a></li>
+
+{% endif %}
+{% endblock %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	{% block body %} {% endblock %}
+
+	<!-- Scroll to Top Button-->
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">×</span>
+			</button>
+		  </div>
+		  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+		  <div class="modal-footer">
+			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+			<a class="btn btn-primary" href="/accounts/logout">Logout</a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- FOOTER -->
+	<footer class="page-footer dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<h5>Get started</h5>
+					<ul>
+						<li><a href="https://vaibhav-shukla.herokuapp.com">Home</a></li>
+						<li><a href="#">Sign up</a></li>
+						<li><a href="#">Downloads</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+					<h5>About us</h5>
+					<ul>
+						<li><a href="#">Company Information</a></li>
+						<li><a href="#">Contact us</a></li>
+						<li><a href="#">Reviews</a></li>
+						<li><a href="http://vaibhavshukla.ml">Vaibhav Shukla</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+					<h5>Support</h5>
+					<ul>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Help desk</a></li>
+						<li><a href="#">Forums</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+					<h5>Legal</h5>
+					<ul>
+						<li><a href="#">Terms of Service</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<p>&copy; 2020 MVC</p>
+		</div>
+	</footer>
+	<script src="{% static 'mrv/assets/js/jquery.min.js?h=1dd785e1de9a32e236b624ae268bb803' %}"></script>
+	<script src="{% static 'mrv/assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+	<script src="{% static 'mrv/assets/js/smoothproducts.min.js?h=975b2635c9a06eae9f47d6cae8158a12' %}"></script>
+	<script src="{% static 'mrv/assets/js/theme.js?h=417b03f5f0a4f9f27f8c248f532eb5af' %}"></script>
+</body>
+
+</html>

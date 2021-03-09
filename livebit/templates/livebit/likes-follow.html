@@ -1,0 +1,8 @@
+<form action="/livebit/follow/{{user.id}}" method="POST">
+	{% csrf_token %}
+	{% if user not in suggestions %}
+	<button class="whiteBtn mr-4" type="submit" name="like_follow" value="yes" style="height: 35px;width: 90px;font-size: 16px;" id="follow{{user.id}}">Following</button>
+	{% else %}
+	<button class="blueBtn mr-4" type="submit" name="like_follow" value="yes" style="height: 35px;width: 70px;font-size: 16px;" id="follow{{user.id}}">Follow</button>
+	{% endif %}
+</form>

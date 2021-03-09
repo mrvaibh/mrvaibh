@@ -1,0 +1,44 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="card mt-5 mx-5" style="width: 270px;position: fixed;">
+	<div class="card-body">
+		<div class="row ml-1">
+			<img src="media/{{user.userprofile.user_img}}" class="rounded-circle border mb-1 mr-2" onContextMenu="return false;" draggable="false" style="width: 40px;height: 40px;user-select: none;">
+			<h6><a class="custmLink" style="text-decoration: none;" href="{{user.username}}">{{user.username}}</a></h6>
+		</div>
+		<h6 class="text-muted" style="margin-left: 50px;margin-top: -25px;">{{user.first_name}} {{user.last_name}}</h6>
+	</div>
+	<div class="card-body" style="height: 180px;overflow: hidden auto;">
+		<h6 class="text-muted card-subtitle mb-3">Suggestions for you</h6>
+		<ul class="list-group">
+			{% for user in suggestions %}
+			<form action="/livebit/follow/{{user.id}}" method="POST">
+			{% csrf_token %}
+			<div class="row">
+			<a href="/{{user.username}}" style="text-decoration: none;" class="col-sm"><img class="rounded-circle border mb-1" height="30" width="30" src="media/{{user.userprofile.user_img}}" onContextMenu="return false;" draggable="false" style="user-select: none;"> {{user.username}}</a><button class="blueBtn ml-1" type="submit" style="height: 25px;font-size: 12px;" id="follow{{user.id}}">Follow</button>
+			</div>
+			</form>
+
+			<script>
+			$(document).ready(function(e){
+				$(document).on('click', '#follow{{user.id}}', function(e){
+					e.preventDefault();
+
+					$.ajax({
+						type:'POST',
+						url:'/livebit/follow/{{user.id}}',
+						data:{'csrfmiddlewaretoken':'{{csrf_token}}'},
+						dataType:'json',
+						success:function(response){
+							$('#follow-unfollow-section').html(response['form']);
+						},
+						error:function(rs, e){
+							console.log(rs.responseText);
+						},
+					});
+				});
+			});
+			</script>
+			{% endfor %}
+		</ul>
+	</div>
+</div>

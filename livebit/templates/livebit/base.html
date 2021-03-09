@@ -1,0 +1,115 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="shortcut icon" href="{% static 'livebit/assets/img/favicon.ico' %}">
+	<link rel="stylesheet" href="{% static 'livebit/assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'livebit/assets/fonts/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'livebit/assets/css/-Login-form-Page-BS4-.css' %}">
+	<link rel="stylesheet" href="{% static 'livebit/assets/css/Navigation-with-Button.css' %}">
+	<link rel="stylesheet" href="{% static 'livebit/assets/css/styles.css' %}">
+
+	<style>
+		i{
+			color: #000;
+		}
+		i:hover{
+			color: #6d6d6d;
+			cursor: pointer;
+		}
+		a{
+			text-decoration: none !important;
+			color: #000;
+		}
+		button{
+			user-select: none;
+		}
+		.blueBtn{
+			border-radius: 4px;
+			background: #4d97f0;
+			color: #fff;
+			border: none;
+			outline: none !important;
+		}
+		.blueBtn:active{
+			background: #4d97f0ab;
+		}
+		.whiteBtn{
+			background-color: #fafafa;
+			border: 1px solid #b9b9b9;
+			font-size: 17px;
+			border-radius: 5px;
+			color: #4e4e4e;
+			font-weight: 600;
+			outline:none !important;
+		}
+		.whiteBtn:active{
+			opacity: 50%;
+		}
+		{% block css %} {% endblock %}
+	</style>
+</head>
+
+<body style="background-color:#fafafa;">
+	<nav class="navbar navbar-light navbar-expand fixed-top border-white border rounded-0 shadow-sm" style="background-color: #ffffff;">
+        <div class="container-fluid"><a class="navbar-brand mx-4" href="{% url 'livebit:home' %}"><img class="ml-5" src="{% static 'livebit/assets/img/livebit-icon.png' %}" onContextMenu="return false;" draggable="false" style="user-select: none; height: 38px;"><img class="mx-2" src="{% static 'livebit/assets/img/livebit-only-name.png' %}" onContextMenu="return false;" draggable="false" style="user-select: none; height: 39px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse mr-3" id="navcol-1"><span class="ml-auto navbar-text">&nbsp;</span><input type="search" id="user-input" placeholder="Search" style="background-color: #fafafa;background-image: url({% static 'livebit/assets/img/search-icon.png' %});" autocomplete="off" maxlength="20">
+                <ul class="nav navbar-nav mx-auto"
+                    style="color: rgb(96,99,103);font-size: 25px;">
+                    {% block post %}<li class="nav-item mx-3" role="presentation"><a data-toggle="modal" data-target="#postModal"><i class="far fa-arrow-alt-circle-up"></i></a></li>{% endblock %}
+                    {% block explore %}<li class="nav-item mx-3" role="presentation"><a href="/explore/"><i class="far fa-compass"></i></a></li>{% endblock %}
+                    {% block notification %}<li class="nav-item mx-3" role="presentation"><i class="far fa-heart"></i></li>{% endblock %}
+                    {% block user %}<li class="nav-item mx-3" role="presentation"><a href="{% url 'livebit:profile' u=user %}"><i class="far fa-user"></i></a></li>{% endblock %}
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <br><br>
+    {% block body %} {% endblock %}
+
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Upload Post</h5>
+		  </div>
+		  <div class="modal-body text-center">
+			<form enctype="multipart/form-data" method="POST">
+				{% csrf_token %}
+				{{form|crispy}}
+				<h3 style="cursor: pointer; color: skyblue;" onclick="realfile.click();">Upload Image</h3>
+				<span id="file-text">No file choosen yet.</span>
+				<br>
+				<button type="submit" class="blueBtn mt-2" style="height: 40px; width: 80px;font-size: 20px;">Post</button>
+				<script type="text/javascript">
+					const realfile = document.getElementById('id_post_img');
+					const customtext = document.getElementById('file-text');
+
+					realfile.addEventListener('change', function(){
+						if (realfile.value) {
+							customtext.innerHTML = realfile.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+						}else{
+							customtext.innerHTML = 'No file choosen yet.'
+						}
+					});
+				</script>
+				<p>{{text}}</p>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<script src="{% static 'livebit/assets/js/jquery.min.js' %}"></script>
+	<script src="{% static 'livebit/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">{% block javascript %} {% endblock %}</script>
+</body>
+
+</html>

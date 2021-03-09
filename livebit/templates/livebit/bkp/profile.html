@@ -1,0 +1,169 @@
+{% extends 'livebit/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{user.first_name}} {{user.last_name}} (@{{user}}) | Mr.VaiBH{% endblock %}
+
+{% block css %}
+.websiteLink{
+	color: #003569 !important;
+	font-weight: 500 !important;
+}
+.editBtn{
+	background-color: #fafafa;
+	border: 1px solid #b9b9b9;
+	font-size: 17px;
+	border-radius: 5px;
+	color: #4e4e4e;
+	font-weight: 600;
+	outline:none !important;
+}
+.editBtn:active{
+	opacity: 50%;
+}
+.settingBtn{
+	border: none;
+	background-color: #fff;
+	outline:none !important;
+}
+.settingBtn:active{
+	opacity:50%;
+}
+{% endblock %}
+
+{% block post %}{% endblock %}
+
+{% block body %}
+	<div class="mt-5 container">
+	<div class="row my-2">
+		<div class="col-lg-4 order-lg-1 text-center">
+			<img src="/media/{{user.userprofile.user_img}}" class="mx-auto img-fluid img-circle d-block rounded-circle border" alt="User Image" onContextMenu="return false;" draggable="false" style="cursor: pointer; user-select: none;" height="250" width="200" href="#" data-toggle="modal" data-target="#profilepicModal" {% if user == request.user %} title="Change Profile Photo" {% endif %}>
+		</div>
+
+		<div class="col-lg-8 order-lg-2">
+			<div class="tab-content py-4">
+				<div class="tab-pane active" id="profile">
+					<div class="row">
+					<p class="ml-3" style="font-size: 30px; font-weight: 50;">{{user.username}}
+						 {% if user.userprofile.is_verified %}<img src="/media/user/img/check.svg" onContextMenu="return false;" draggable="false" style="user-select: none;" height="30" width="30"> {% endif %}
+						 {% if user == request.user %}<a href="{% url 'livebit:edit_profile' %}"><button class="editBtn mx-2">Edit Profile</button></a><i class="fas fa-cog ml-3" data-toggle="modal" data-target="#settingModal"></i>{% endif %}
+
+					<form action="/follow/" method="POST">
+						{% csrf_token %}
+
+						{% if user != request.user %}
+						{% if is_following %}
+						<button name="follow_id" type="submit" class="btn btn-primary mx-5" value="{{user.id}}">Unfollow</button>
+						{% else %}
+						<button name="follow_id" type="submit" class="btn btn-primary mx-5" value="{{user.id}}">Follow</button>
+						{% endif %}
+						{% endif %}
+					</form>
+					</p>
+					</div>
+
+					<h4 class="mb-3">{{user.first_name}} {{user.last_name}}</h4>
+					<div class="row">
+						<div class="col-md-6">
+							<p style="margin-top: -20px;">{{user.userprofile.bio|linebreaks}}</p>
+							<a class="websiteLink" href="{{user.userprofile.website}}" target="_blank">{{user.userprofile.website|cut:"http://"|cut:"https://"}}</a>
+						</div>
+						<div class="col-md-6">
+							<h6>Recent badges</h6>
+							<a href="#" class="badge badge-dark badge-pill">html5</a>
+							<a href="#" class="badge badge-dark badge-pill">react</a>
+							<a href="#" class="badge badge-dark badge-pill">codeply</a>
+							<a href="#" class="badge badge-dark badge-pill">angularjs</a>
+							<a href="#" class="badge badge-dark badge-pill">css3</a>
+							<a href="#" class="badge badge-dark badge-pill">jquery</a>
+							<a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+							<a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+							<hr>
+							<span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+							<span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+							<span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+						</div>
+						<div class="col-md-12">
+							<h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+							<table class="table table-sm table-hover table-striped">
+								<tbody>
+									<tr>
+										<td>
+											<strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--/row-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if user == request.user %}
+	<div class="modal fade" id="profilepicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Change Profile Photo</h5>
+		  </div>
+		  <div class="modal-body text-center">
+			<label class="custom-file">
+			<input type="file" id="file" class="custom-file-input" type="image" style="cursor: pointer;">
+			<h3 class="custom-file-control" style="cursor: pointer; color: skyblue;">Upload Picture</h3>
+			</label>
+			<hr>
+			<h2 style="cursor: pointer; color: red;">Remove Photo</h3>
+			<hr>
+			<h3 style="cursor: pointer;" data-dismiss="modal">Cancel</h3>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="modal fade mt-5" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="transition: opacity 0.01s linear;">
+	  <div class="modal-dialog" style="width: 360px;" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">
+			<a href="{% url 'accounts:change_password' %}"><button class="settingBtn btn-block">Change Password</button></a>
+			<hr>
+			<a><button class="settingBtn btn-block">Notifications</button></a>
+			<hr>
+			<a><button class="settingBtn btn-block">Privacy and Security</button></a>
+			<hr>
+			<a><button class="settingBtn btn-block">Login Activity</button></a>
+			<hr>
+			<a><button class="settingBtn btn-block">Report a Problem</button></a>
+			<hr>
+			<a href="{% url 'accounts:logout' %}"><button class="settingBtn btn-block">Logout</button></a>
+			<hr>
+			<a><button class="settingBtn btn-block" data-dismiss="modal">Cancel</button></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock %}
