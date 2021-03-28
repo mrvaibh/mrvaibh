@@ -142,6 +142,8 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/mrv'
 
+SECURE_SSL_REDIRECT = True
+
 EMAIL_HOST = ['localhost', 'mrvaibh.herokuapp.com']
 EMAIL_PORT = 1025
 
