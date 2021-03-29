@@ -10,6 +10,7 @@ urlpatterns = [
 	path('blog-list', views.blog_list, name="mrvblog-list"),
 	path('about', views.about, name="mrvabout"),
 	path('contact', views.contact, name="mrvcontact"),
+	path('wiki', views.wiki),
 	path('vaibhav-shukla', views.vaibhav_shukla),
 	path('gen', views.gen),
 
