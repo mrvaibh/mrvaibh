@@ -31,6 +31,9 @@ def contact(request):
 	service, service_count = Service.objects.all(), Service.objects.all().count()
 	return render(request, 'mrv/contact-us.html', {'service':service, 'service_count':service_count})
 
+def wiki(request):
+	return render(request, 'mrv/wiki.html')
+
 def vaibhav_shukla(request):
 	return render(request, 'mrv/vaibhav-shukla.html')
 
