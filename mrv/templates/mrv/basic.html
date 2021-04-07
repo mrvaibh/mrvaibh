@@ -9,24 +9,26 @@
 	<title>{% block title%}{% endblock %}</title>
 	<link rel="shortcut icon" href="{% static 'mrv/assets/img/favicon.ico' %}">
 
-	<meta name="title" content="Vaibhav Shukla | Official Site">
-	<meta name="description" content="Vaibhav Shukla aka Mr.VaiBH has this website for his obvious purpose">
-	<meta name=”robots” content="index, follow">
+	<!-- Primary Meta Tags -->
+	<meta name="title" content="Vaibhav Shukla - Mr.VaiBH">
+	<meta name="description" content="MRV is a Vaibhav Shukla company what is working to turn our passion for creations into a booming future. We hope you enjoy our products as much as we enjoy offering them to you.">
+	<meta name="robots" content="index, follow">
 	<meta name="google-site-verification" content="y1UDS65yeUz2Qi0W97DxJFHjRxMTR8vQHYTWrzyuWM8" />
-	
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="Vaibhav Shukla | MRVAIBH" />
-	<meta property="og:description" content="Vaibhav Shukla aka Mr.VaiBH has this website for his obvious purpose" />
-	<meta property="og:image" content="https://avatars0.githubusercontent.com/u/52421094?s=460&u=f6dd8e409df3c7599e4594c71804b6cf1e065d3d&v=4" />
-	<meta property="og:url" content="https://www.facebook.com/MrVaiBH0" />
-	<meta property="og:site_name" content="Vaibhav Shukla" />
-	
-	<meta name="twitter:title" content="MrVaiBH">
-	<meta name="twitter:description" content="Vaibhav Shukla twitter account">
-	<meta name="twitter:image" content="https://avatars0.githubusercontent.com/u/52421094?s=460&u=f6dd8e409df3c7599e4594c71804b6cf1e065d3d&v=4">
-	<meta name="twitter:site" content="@MrVaiBH">
-	<meta name="twitter:creator" content="@MrVaiBH">
-	
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://mrvaibh.herokuapp.com/">
+	<meta property="og:title" content="Vaibhav Shukla - Mr.VaiBH">
+	<meta property="og:description" content="MRV is a Vaibhav Shukla company what is working to turn our passion for creations into a booming future. We hope you enjoy our products as much as we enjoy offering them to you.">
+	<meta property="og:image" content="{% static 'mrv/assets/img/Mr.VaiBH_strip_CEO.png' %}">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://mrvaibh.herokuapp.com/">
+	<meta property="twitter:title" content="Vaibhav Shukla - Mr.VaiBH">
+	<meta property="twitter:description" content="MRV is a Vaibhav Shukla company what is working to turn our passion for creations into a booming future. We hope you enjoy our products as much as we enjoy offering them to you.">
+	<meta property="twitter:image" content="{% static 'mrv/assets/img/Mr.VaiBH_strip_CEO.png' %}">
+
 	<link rel="stylesheet" href="{% static 'mrv/assets/bootstrap/css/bootstrap.min.css?h=8b679dc8ff6e11bdd2c46c91ec9cfecc' %}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
 	<link rel="stylesheet" href="{% static 'mrv/assets/fonts/simple-line-icons.min.css' %}">
@@ -35,7 +37,7 @@
 	<link rel="stylesheet" href="{% static 'mrv/assets/css/smoothproducts.css?h=38a515b6b30123300b3619cce6411cec' %}">
 
 	<style>
-		{% block css %} {% endblock %}
+		{% block css %}{% endblock %}
 	</style>
 </head>
 
@@ -43,96 +45,117 @@
 
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-		<div class="container"><img src="{% static 'mrv/assets/img/Mr.VaiBH_strip.png?h=a23cdb60e5e10222e27a06023f6d9aaa' %}" height="55"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse"
-				id="navcol-1">
+		<div class="container"><img
+				src="{% static 'mrv/assets/img/Mr.VaiBH_strip.png?h=a23cdb60e5e10222e27a06023f6d9aaa' %}"
+				height="55"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span
+					class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="nav navbar-nav ml-auto">
 
-					{% block nav-home %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv">Home</a></li>{% endblock %}
-					{% block nav-pricing %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/pricing">Pricing</a></li>{% endblock %}
-					{% block nav-blog %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/blog-list">Blogs</a></li>{% endblock %}
-					{% block nav-about %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/about">About Us</a></li>{% endblock %}
-					{% block nav-contact %}<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/mrv/contact">Contact</a></li>{% endblock %}
-					
+					{% block nav-home %}<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/mrv">Home</a></li>{% endblock %}
+					{% block nav-pricing %}<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/mrv/pricing">Pricing</a></li>{% endblock %}
+					{% block nav-blog %}<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/mrv/blog-list">Blogs</a></li>{% endblock %}
+					{% block nav-about %}<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/mrv/about">About Us</a></li>{% endblock %}
+					{% block nav-contact %}<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/mrv/contact">Contact</a></li>{% endblock %}
+
 					{% block nav %}
 
-{% if user.is_authenticated or email.is_authenticated %}
-<li class="nav-item dropdown no-arrow">
-	<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<i class="fa fa-bell" style="font-size:25px;color:#478cdb"></i>
-		<span class="badge badge-danger">9+</span>
-	</a>
-	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-		<a class="dropdown-item" href="#">Action</a>
-		<a class="dropdown-item" href="#">Another action</a>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="#">Something else here</a>
-	</div>
-</li>
-<li class="nav-item dropdown no-arrow">
-	<a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<i class="fa fa-th" style="font-size:25px;color:#478cdb;"></i>
-		<span class="badge badge-danger">{{service_count}}</span>
-	</a>
-	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="serviceDropdown">
-		<style type="text/css">
-			#tbl:hover{
-				cursor: pointer;
-				font-weight: bolder;
-				background: #f8fcff;
-				transition: all 0.3s;
-			}
-			.img {
-				width: auto;
-				height: 50px;
-				background-repeat: no-repeat;
-			}
-		</style>
-		<table class="table table-borderless mt-3">
-			<tbody>
-				<tr>
-				{% for service in service %}
-					<td id="tbl"><a href="{{service.url}}" title="{{service.description}}" style="text-decoration: none;"><img class="rounded border responsive img" src="{{service.service_img.url}}" target="_blank">{{service.name}}</a></td>
-				
-				{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
-				</tr>
-				<tr>
+					{% if user.is_authenticated or email.is_authenticated %}
+					<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-bell" style="font-size:25px;color:#478cdb"></i>
+							<span class="badge badge-danger">9+</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-th" style="font-size:25px;color:#478cdb;"></i>
+							<span class="badge badge-danger">{{service_count}}</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="serviceDropdown">
+							<style type="text/css">
+								#tbl:hover {
+									cursor: pointer;
+									font-weight: bolder;
+									background: #f8fcff;
+									transition: all 0.3s;
+								}
+
+								.img {
+									width: auto;
+									height: 50px;
+									background-repeat: no-repeat;
+								}
+							</style>
+							<table class="table table-borderless mt-3">
+								<tbody>
+									<tr>
+										{% for service in service %}
+										<td id="tbl"><a href="{{service.url}}" title="{{service.description}}"
+												style="text-decoration: none;"><img
+													class="rounded border responsive img"
+													src="{{service.service_img.url}}"
+													target="_blank">{{service.name}}</a></td>
+
+										{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last
+										%}
+									</tr>
+									<tr>
+										{% endif %}
+										{% endfor %}
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					<li class="nav-item dropdown no-arrow">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-user-circle-o" style="font-size:25px;color:#478cdb"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+							<label class="dropdown-header">{{user.first_name}} {{user.last_name}}</label>
+							<label class="dropdown-header">{{user.email}}</label>
+							<a class="dropdown-item" href="/{{user.username}}"><i class="fa fa-user"
+									aria-hidden="true"></i>
+								Profile</a>
+							<a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i>
+								Settings</a>
+							<a class="dropdown-item" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i>
+								Activity Log</a>
+							<a class="dropdown-item" href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>
+								Help Desk</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/accounts/login"><i class="fa fa-user-plus"
+									aria-hidden="true"></i>
+								Add another account</a>
+							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i
+									class="fa fa-sign-out" aria-hidden="true"></i>
+								Logout</a>
+						</div>
+					</li>
+
+					{% else %}
+					<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/accounts/login">Login</a>
+					</li>
+					<li class="nav-item mt-1" role="presentation"><a class="nav-link"
+							href="/accounts/register">Register</a></li>
+
 					{% endif %}
-				{% endfor %}
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</li>
-<li class="nav-item dropdown no-arrow">
-	<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<i class="fa fa-user-circle-o" style="font-size:25px;color:#478cdb"></i>
-	</a>
-	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-		<label class="dropdown-header">{{user.first_name}} {{user.last_name}}</label>
-		<label class="dropdown-header">{{user.email}}</label>
-		<a class="dropdown-item" href="/{{user.username}}"><i class="fa fa-user" aria-hidden="true"></i>
- Profile</a>
-		<a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i>
- Settings</a>
-		<a class="dropdown-item" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i>
- Activity Log</a>
-		<a class="dropdown-item" href="#"><i class="fa fa-question-circle" aria-hidden="true"></i>
- Help Desk</a>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="/accounts/login"><i class="fa fa-user-plus" aria-hidden="true"></i>
- Add another account</a>
-		<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>
- Logout</a>
-	</div>
-</li>
-
-{% else %}
-<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/accounts/login">Login</a></li>
-<li class="nav-item mt-1" role="presentation"><a class="nav-link" href="/accounts/register">Register</a></li>
-
-{% endif %}
-{% endblock %}
+					{% endblock %}
 				</ul>
 			</div>
 		</div>
@@ -143,22 +166,23 @@
 	<!-- Scroll to Top Button-->
 
 	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">×</span>
-			</button>
-		  </div>
-		  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-		  <div class="modal-footer">
-			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-			<a class="btn btn-primary" href="/accounts/logout">Logout</a>
-		  </div>
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="/accounts/logout">Logout</a>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
 
 	<!-- FOOTER -->
