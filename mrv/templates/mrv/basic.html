@@ -116,8 +116,7 @@
 													src="{{service.service_img.url}}"
 													target="_blank">{{service.name}}</a></td>
 
-										{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last
-										%}
+										{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
 									</tr>
 									<tr>
 										{% endif %}
