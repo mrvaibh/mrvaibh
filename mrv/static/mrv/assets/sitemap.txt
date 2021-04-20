@@ -1,7 +1,0 @@
-https://mrvaibh.herokuapp.com/
-https://mrvaibh.herokuapp.com/mrv/
-https://mrvaibh.herokuapp.com/mrv/about
-https://mrvaibh.herokuapp.com/mrv/wiki
-https://mrvaibh.herokuapp.com/mrv/vaibhav-shukla
-https://mrvaibh.herokuapp.com/mrv/contact
-https://mrvaibh.herokuapp.com/mrv/pricing
