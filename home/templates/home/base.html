@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    {% load static %}
+  {% load static %}
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{% block title %}{% endblock title %} | Mr. VaiBH</title>
+  <title>{% block title %}{% endblock title %} | Mr.VaiBH</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -15,7 +15,9 @@
   <link href="{% static 'home/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'home/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
@@ -24,7 +26,7 @@
   <link href="{% static 'home/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'home/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static 'home/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}"rel="stylesheet">
+  <link href="{% static 'home/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
@@ -39,11 +41,37 @@
 
 <body>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": "Vaibhav Shukla",
+    "url": "https://mrvaibh.ml",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Vaibhav-circle-transparent.png/330px-Vaibhav-circle-transparent.png",
+    "sameAs": [
+      "https://www.instagram.com/mrvaibh0/",
+      "https://www.facebook.com/mrvaibh0/",
+      "https://twitter.com/mrvaibh0/",
+      "https://studio.youtube.com/channel/UCdokRgcJAzSSj-NAvoWs-ug/",
+      "https://www.linkedin.com/in/mrvaibh/",
+      "https://en.wikipedia.org/wiki/User:Mr.VaiBH/sandbox",
+      "https://github.com/mr-vaibh/",
+      "https://vaibhavshukla.ml"
+    ],
+    "jobTitle": "Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "MRVAIBH"
+    }  
+  }
+  </script>
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'home/img/Mr.VaiBH_strip.png' %}" alt="" class="img-fluid"></a>
+      <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static 'home/img/Mr.VaiBH_strip.png' %}" alt=""
+          class="img-fluid"></a>
       <!-- Uncomment below if you prefer to use a text logo -->
       <!-- <h1 class="logo me-auto"><a href="{% url 'index' %}">Sailor</a></h1> -->
 
@@ -82,7 +110,7 @@
     </div>
   </header><!-- End Header -->
 
-    {% block body %}{% endblock body %}
+  {% block body %}{% endblock body %}
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -158,7 +186,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
