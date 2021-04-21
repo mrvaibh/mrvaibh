@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+.carousel-title {
+  font-size: 65px !important;
+  color: rgb(250, 255, 0) !important;
+  font-weight: 400 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.carousel-para {
+  font-size: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-weight: lighter;
+  max-width: 700px;
+  margin-bottom: 40px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.carousel-item {
+    opacity: 0;
+    transition-duration: 10s ease;
+}
+.carousel-item .active {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
 }
-
-.App-link {
-  color: #61dafb;
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+blockquote p {
+  display: inline;
 }
