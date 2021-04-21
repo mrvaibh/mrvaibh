@@ -53,3 +53,12 @@ def blog_single(request, pk):
 def contact(request):
     context = {'contact_page': 'active'}
     return render(request, 'home/contact.html', context)
+
+def wiki(request):
+    return render(request, 'home/wiki.html')
+
+def terms_policies(request):
+    return render(request, 'home/terms-and-policies.html')
+
+def privacy_policies(request):
+    return render(request, 'home/privacy-policies.html')

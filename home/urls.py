@@ -13,4 +13,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blog/<int:pk>', views.blog_single, name='blogsingle'),
     path('contact/', views.contact, name='contact'),
+    path('wiki/', views.wiki, name='wiki'),
+    path('terms-and-policies/', views.terms_policies, name='terms-and-policies'),
+    path('privacy-policies/', views.privacy_policies, name='privacy-policies'),
 ]
