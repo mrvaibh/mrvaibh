@@ -31,3 +31,9 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+/* @media (max-width: 640px) {
+  *, .carousel-title {
+    font-size: calc(105% + 0.1vw) !important;
+  }
+} */
