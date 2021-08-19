@@ -13,7 +13,7 @@
     <title>MRVAIBH</title>
 
     <!-- Search console verification -->
-    <meta name="google-site-verification" content="y1UDS65yeUz2Qi0W97DxJFHjRxMTR8vQHYTWrzyuWM8" />
+    <meta name="google-site-verification" content="xJGWA3r9k-uoY68neDY5c2M6h6va9qmdfJMP_CjRs30" />
 
     <!-- SEO -->
     <meta property="og:url" content="https://mrvaibh.ml/">
