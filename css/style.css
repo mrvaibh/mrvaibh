@@ -1,0 +1,151 @@
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  font-family: "Open sans", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 1.278;
+  color: #757575;
+  background-color: #e9e9e9;
+  background-image: url("/img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+a {
+  color: #4c85f6;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+
+
+/* ===== Brand ===== */
+#brand {
+  position: absolute;
+  top: 0.5em;
+  left: 1em;
+  margin: 0;
+  padding: 0;
+  padding-right: 3em;
+  color: #4c85f6;
+  line-height: 1.42857143;
+  cursor: pointer;
+  user-select: none;
+}
+#brand:hover {
+  color: #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+/* ===== Menu ===== */
+#menu {
+  position: absolute;
+  top: 0.5em;
+  right: 3em;
+  margin: 0;
+  padding: 0;
+  padding-left: 9em;
+  line-height: 26px;
+  user-select: none;
+}
+#menu ul {
+  list-style: none;
+  padding: 0;
+}
+#menu ul li {
+  display: inline-block;
+  padding-left: 20px;
+}
+#menu ul li a {
+  color: #757575;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+
+
+/* ===== Main body ===== */
+.app__container {
+  padding: 8em 2em 0 8em;
+}
+
+/* Content */
+#content {
+  max-width: 80%;
+}
+#content img {
+  width: 8em;
+  border-radius: 7px;
+  box-shadow: 1em 1em 5em #888888;
+  user-select: none;
+}
+#content #tagline {
+  font-weight: "Raleway", sans-serif;
+  font-size: 2.5em;
+  font-weight: 400;
+  color: #6e6f73;
+  margin-top: 0.5em;
+}
+#content #text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#content #signoff {
+  margin-top: 4em;
+  font-size: 1em;
+  color: #6e6f73;
+  font-weight: bold;
+}
+#content #signoff p {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+
+@media all and (max-width: 430px) {
+  #brand {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #menu {
+    top: 11%;
+    left: 50%;
+    right: unset;
+    transform: translate(-50%, -10%);
+  }
+  #content #tagline {
+    font-size: 2em;
+  }
+}
+
+@media all and (max-width: 1111px) {
+  .app__container {
+    padding: 8em 0 0 2em;
+  }
+}
+
+@media all and (max-width: 730px) {
+  .app__container {
+    padding: 8em 1em 0 2em;
+  }
+  #content {
+    max-width: unset;
+  }
+  #content img {
+    width: 6em;
+  }
+}
