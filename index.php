@@ -68,15 +68,15 @@
         "@type": "Organization",
         "name": "MRVAIBH",
         "alternateName": "MRV",
-        "url": "https://mrvaibh.ml",
+        "url": "https://mrvaibh.herokuapp.com",
         "logo": "https://mrvaibh.herokuapp.com/img/logo/favicon/favicon-194.png",
         "sameAs": [
-        "https://www.instagram.com/mrvaibh0/",
-        "https://twitter.com/MrVaiBH0",
-        "https://github.com/mrvaibh/",
-        "https://www.linkedin.com/in/mrvaibh/",
-        "https://facebook.com/MrVaiBH0",
-        "https://vaibhav-shukla.herokuapp.com/"
+            "https://www.instagram.com/mrvaibh0/",
+            "https://twitter.com/MrVaiBH0",
+            "https://github.com/mrvaibh/",
+            "https://www.linkedin.com/in/mrvaibh/",
+            "https://facebook.com/MrVaiBH0",
+            "https://vaibhav-shukla.herokuapp.com/"
         ]
     }
     </script>
