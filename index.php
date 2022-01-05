@@ -87,7 +87,7 @@
         
         <nav id="menu">
             <ul>
-                <li><a href="https://en.everybodywiki.com/MrVaiBH">Investor</a></li>
+                <li><a href="https://www.crunchbase.com/person/vaibhav-shukla-f6fa">Investor</a></li>
             </ul>
         </nav>
         
@@ -100,7 +100,7 @@
                         MRVAIBH Inc. is a holding company which operates and manages many projects, ideas, interests — and is the parent company of ventures like Plannt, Evolves, Neutral Tip, etc.
                     </p>
                     <p>
-                        We are a technology investment group, which is a part of the <a href="https://mrvaibh.fandom.com/" target="__blank">MRVAIBH</a> Inc.
+                        We are a technology investment group, which is a part of the <a href="https://www.crunchbase.com/organization/mrvaibh" target="__blank">MRVAIBH</a> Inc.
                     </p>
                 </div>
                 <div id="signoff" title="Founder">
