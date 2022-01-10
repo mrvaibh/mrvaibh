@@ -16,7 +16,7 @@
     <meta name="google-site-verification" content="xJGWA3r9k-uoY68neDY5c2M6h6va9qmdfJMP_CjRs30" />
 
     <!-- SEO -->
-    <meta property="og:url" content="https://mrvaibh.ml/">
+    <meta property="og:url" content="https://mrvaibh.github.io">
     <meta property="og:title" content="MRVAIBH">
     <meta property="og:image" content="https://mrvaibh.herokuapp.com/img/logo/favicon/favicon-194.png">
     <meta property="og:site_name" content="MRVAIBH">
@@ -33,7 +33,6 @@
 
     <meta name="description" content="MRVAIBH Inc. is a holding company which operates and manages many projects, ideas, interests — and is the parent company of ventures like Plannt, Evolves, Neutral Tip, etc.">
     <meta name="keywords" content="MRVAIBH, Technology investment, Investment group, Holding company, Parent company, Plannt, Evolves, Neutral Tip, Life Sciences, Health, Ventures, Capital, Startups, Technology Innovation, Internet business, Information Technology">
-    <link rel="canonical" href="https://mrvaibh.ml/">
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/logo/apple-touch-icon/apple-touch-icon-57.png">
